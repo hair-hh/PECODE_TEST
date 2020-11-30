@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+    <Button
+        android:id="@+id/buttonNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval_copy"
+        android:onClick="onNotify"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/create_new_notification"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/buttonNotification"
+        app:layout_constraintEnd_toEndOf="@id/buttonNotification"
+        app:layout_constraintStart_toStartOf="@id/buttonNotification"
+        app:layout_constraintTop_toTopOf="@id/buttonNotification" />
+
+    <TextView
+        android:id="@+id/textNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <ImageButton
+        android:id="@+id/buttonMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-16dp"
+        android:background="@drawable/blue"
+        android:contentDescription="@string/imagebutton"
+        android:onClick="onMinusClick"
+        android:visibility="invisible"
+        android:src="@drawable/minus"
+        app:layout_constraintBottom_toBottomOf="@id/textNumber"
+        app:layout_constraintStart_toStartOf="@id/textNumber"
+        app:layout_constraintTop_toTopOf="@id/textNumber" />
+
+    <ImageButton
+        android:id="@+id/buttonPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue"
+        android:contentDescription="@string/imagebutton"
+        android:onClick="onPlusClick"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@id/textNumber"
+        app:layout_constraintEnd_toEndOf="@id/textNumber"
+        app:layout_constraintTop_toTopOf="@id/textNumber" />
+</androidx.constraintlayout.widget.ConstraintLayout>
