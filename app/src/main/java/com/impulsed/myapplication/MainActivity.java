@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity  {
     private static final String STATE_LIST = "items";
     //constant for page position
     private static final String POS = "position";
-    int i =0;
+    private int restoredPosition = 0;
 
     //items for FragmentStateAdapter
     ArrayList<Integer> items = new ArrayList<>();
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity  {
         viewPager2 = findViewById(R.id.viewPager);
         adapter = new SlidePagerAdapter(this, items);
         viewPager2.setAdapter(adapter);
+        viewPager2.setCurrentItem(restoredPosition);
+        textPosition.setText(String.valueOf(adapter.getItem(restoredPosition)));
         // to view page number
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity  {
         } else {
             items.add(1);
         }
+        restoredPosition = sp.getInt(POS, 0);
         return items;
     }
 
@@ -149,13 +152,13 @@ public class MainActivity extends AppCompatActivity  {
         NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(notifPos);
 
-        Log.d(Debudding.TAG, "ON_MINUS " + ++i);
+        Log.d(Debudding.TAG, "ON_MINUS ");
     }
 
     public void onPlusClick(View view) {
         //add one more item
         int position = viewPager2.getCurrentItem();
-        adapter.addFragment(adapter.getItem(position) + 1);
+        adapter.addFragment(position, adapter.getItem(position) + 1);
         //jump to this position
         viewPager2.setCurrentItem(position + 1);
     }
