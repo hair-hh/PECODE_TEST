@@ -53,8 +53,8 @@ public class SlidePagerAdapter extends FragmentStateAdapter {
     }
 
     // add a new fragment
-    public void addFragment(int fragment) {
-        items.add(fragment - 1, fragment);
+    public void addFragment(int position, int fragment) {
+        items.add(position+1, fragment);
         notifyItemRangeChanged(fragment, items.size());
     }
 
