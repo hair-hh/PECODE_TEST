@@ -4,22 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/ic_bg"
     tools:context=".MainActivity">
+    <!-- Can set background here to prevent motion effect -->
+    <ImageButton
+        android:id="@+id/imPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue"
+        android:contentDescription="@string/imagebutton"
+        android:elevation="4dp"
+        android:onClick="onPlusClick"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle"
+        app:layout_constraintEnd_toEndOf="@id/rectangle"
+        app:layout_constraintTop_toTopOf="@id/rectangle" />
+
+    <ImageButton
+        android:id="@+id/imMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue"
+        android:contentDescription="@string/imagebutton"
+        android:elevation="4dp"
+        android:onClick="onMinusClick"
+        android:src="@drawable/minus"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle"
+        app:layout_constraintStart_toStartOf="@id/rectangle"
+        app:layout_constraintTop_toTopOf="@id/rectangle" />
+
+    <TextView
+        android:id="@+id/textPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:textColor="@color/blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle"
+        app:layout_constraintEnd_toStartOf="@id/imPlus"
+        app:layout_constraintStart_toEndOf="@id/imMinus"
+        app:layout_constraintTop_toTopOf="@id/rectangle" />
+
+    <ImageView
+        android:id="@+id/rectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:contentDescription="@string/imagefragment"
+        android:elevation="3dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rectangle" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+    </androidx.viewpager2.widget.ViewPager2>
 
+    <Button
+        android:id="@+id/buttonNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval_copy"
+        android:elevation="5dp"
+        android:onClick="onNotify"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
 
-
-    <!-- Bad source drawable (blue.png) -->
-
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="6dp"
+        android:gravity="center"
+        android:text="@string/create_new_notification"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@id/buttonNotification"
+        app:layout_constraintEnd_toEndOf="@id/buttonNotification"
+        app:layout_constraintStart_toStartOf="@id/buttonNotification"
+        app:layout_constraintTop_toTopOf="@id/buttonNotification" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

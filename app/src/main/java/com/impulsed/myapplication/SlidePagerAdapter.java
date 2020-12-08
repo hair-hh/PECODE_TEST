@@ -11,47 +11,59 @@ import java.util.ArrayList;
 
 public class SlidePagerAdapter extends FragmentStateAdapter {
     //items to display page number
-    private  ArrayList<String> items;
+    private final ArrayList<Integer> items;
 
     //just constructor
-    public SlidePagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<String> items) {
+    public SlidePagerAdapter(@NonNull FragmentActivity fragmentActivity, ArrayList<Integer> items) {
         super(fragmentActivity);
         this.items = items;
     }
 
-
-
+    public ArrayList<Integer> getItems() {
+        return items;
+    }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        Log.d(Debudding.TAG, "SlideAdapter creates fragment on position: " + position);
         return FirstFragment.newInstance(items.get(position));
     }
 
     @Override
     public int getItemCount() {
-        Log.d(Debudding.TAG, "Returning pageCount from Adapter " + items.size());
         return items.size();
     }
 
     @Override
     public long getItemId(int position) {
-        return items.get(position).hashCode();
+        return items.get(position);
     }
 
-
-
-    public void addFragment(String fragment){
-        items.add(fragment);
-        notifyDataSetChanged();
+    @Override
+    public boolean containsItem(long itemId) {
+        return items.contains((int) itemId);
     }
-    public void removeFragment(int position){
+
+    public int getItem(int position) {
+        return items.get(position);
+    }
+
+    public int getPosition(int item) {
+        return items.contains(item) ? items.indexOf(item) : -1;
+    }
+
+    // add a new fragment
+    public void addFragment(int fragment) {
+        items.add(fragment - 1, fragment);
+        notifyItemRangeChanged(fragment, items.size());
+    }
+
+    //remove fragment on position
+    public void removeFragment(int position) {
         items.remove(position);
-        notifyItemRangeChanged(position, items.size());
-        notifyDataSetChanged();
+        notifyItemRemoved(position);
+        Log.d(Debudding.TAG, "REMOVE ");
     }
-
 
 
 }
